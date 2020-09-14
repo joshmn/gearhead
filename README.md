@@ -193,6 +193,12 @@ Gearhead.register Post do
 end
 ```
 
+### Querying 
+
+Uses Ransack under the hood. Just send the normal `q` in the query, like:
+
+`GET /gearhead/posts?q[user_id]=1`
+
 ### Permitting params
 
 Works just like the params you're used to:
