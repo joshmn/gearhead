@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-require_relative '../lib/gearbox/version'
+require_relative '../lib/gearhead/version'
 
 version = Gearhead::VERSION
 system("gem build gearhead.gemspec")
