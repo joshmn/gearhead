@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require_relative '../lib/gearbox/version'
+
+version = Gearhead::VERSION
+system("gem build gearhead.gemspec")
+system("gem push gearhead-#{version}.gem")
+system("rm gearhead-#{version}.gem")
+system("git tag -a v#{version} -m 'version #{version}'")
+system("git push origin v#{version}")
