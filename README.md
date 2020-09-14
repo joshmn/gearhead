@@ -39,6 +39,10 @@ You can change most of these on the Gear-level, but we have opinions.
 Gearhead.setup do |config|
   # == Routing
   #
+  # The endpoint in which to mount gearhead on.
+  # Default is "/gearhead" — must start with a slash, and have no trailing slash
+  # config.endpoint = "/api/v314"
+  #
   # The default actions a Gear can respond to
   # Default is [:index, :create, :show, :update, :destroy]
   # config.actions = [:index, :show]
@@ -109,7 +113,7 @@ To create a Gear, drop it in `/app/gears` and register it with `Gearhead.registe
 Gearhead.register Post; end
 ```
 
-will generate `/posts` — or whatever `Model.model_name.route_key` is. Change the path:
+will generate `/gearhead/posts` — or whatever `Model.model_name.route_key` is. Change the path:
 
 ```ruby
 Gearhead.register Post, path: "postz"; end 
@@ -133,7 +137,7 @@ Gearhead.register Post do
 end
 ``` 
 
-Want to expose `/posts/favorites`?
+Want to expose `/gearhead/posts/favorites`?
 
 ```ruby
 Gearhead.register Post do 
@@ -143,7 +147,7 @@ Gearhead.register Post do
 end
 ```
 
-Expose `GET /posts/:id/report` and `POST /posts/:id/report`:
+Expose `GET /gearhead/posts/:id/report` and `POST /gearhead/posts/:id/report`:
 
 ```ruby
 Gearhead.register Post do 
