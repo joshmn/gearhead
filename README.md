@@ -1,4 +1,4 @@
-# Gearhead test application
+# Gearhead
 
 Gearhead turns your database into a RESTful API. It's like if ActiveAdmin and Grape had a baby.
 
@@ -28,7 +28,7 @@ app/gears/.keep
 and modifies your routes:
 
 ```ruby
-Gearbox.routes(self)
+Gearhead.routes(self)
 ```
 
 ## Configuration
