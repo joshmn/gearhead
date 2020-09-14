@@ -29,9 +29,8 @@ module Gearhead
     include Extensions::Actions
     include Extensions::Attributes
     include Extensions::Associations
-    include Extensions::CollectionActions
+    include Extensions::CustomActions
     include Extensions::Finder
-    include Extensions::MemberActions
     include Extensions::Pagination
     include Extensions::PermittedParams
     include Extensions::Querying

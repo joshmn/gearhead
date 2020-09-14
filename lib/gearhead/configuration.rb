@@ -50,13 +50,14 @@ module Gearhead
   end
 
   class Configuration
-    attr_accessor :actions, :current_user, :serializer, :scope, :ignored_params,
+    attr_accessor :actions, :current_user, :endpoint, :serializer, :scope, :ignored_params,
                   :automount, :pagination, :serialization, :base_controller
 
     def initialize
       @actions = [:index, :create, :show, :update, :destroy]
       @current_user = nil
       @scope = nil
+      @endpoint = "/gearhead"
       @ignored_params = [:id, :created_at, :updated_at]
       @automount = AutomountConfiguration.new
       @pagination = PaginationConfiguration.new

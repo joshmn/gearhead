@@ -4,12 +4,22 @@ loader = Zeitwerk::Loader.for_gem
 loader.setup
 
 module Gearhead
+  def self.gearbox
+    @gearbox ||= Gearbox.new
+  end
+
+  def self.routes(rails_router)
+    gearbox.routes(rails_router)
+  end
+
   def self.config
     @config ||= Configuration.new
   end
 
-  def self.configure
+  def self.setup
+    gearbox.setup!
     yield config
+    gearbox.prepare!
   end
 
   def self.register(resource_class, options = {}, &block)

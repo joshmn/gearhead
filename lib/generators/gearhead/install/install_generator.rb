@@ -10,7 +10,7 @@ module Gearhead
       end
 
       def install_routes
-        inject_into_file "config/routes.rb", "\n  mount ::Gearhead::Engine => \"/gearhead\"", after: /Rails.application.routes.draw do/
+        inject_into_file "config/routes.rb", "\n  Gearbox.routes(self)", after: /Rails.application.routes.draw do/
       end
     end
   end

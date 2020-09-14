@@ -7,8 +7,7 @@ module Gearhead
   class GearsController < ::Gearhead.config.base_controller.constantize
     before_action :find_gear!
     before_action :ensure_action_enabled!, only: [:index, :create, :show, :update, :destroy]
-    before_action :check_collection_actions!, only: [:show] # hack. bad hack.
-    before_action :find_resource!, except: [:index, :create]
+    before_action :find_resource!, except: [:index, :create, :collection_action]
 
     def index
       render json: Gearhead::Actions::Index.build(@gear, request), adapter: false
@@ -46,9 +45,16 @@ module Gearhead
     end
 
     def member_action
-      action = @gear._gear_member_actions[request.request_method][params[:member_action].to_sym]
-      if action
-        return render json: instance_exec(&action)
+      action = @gear._gear_member_actions[params[:member_action].to_sym]
+      if action && action.verbs.include?(request.request_method.to_sym.downcase)
+        return render json: instance_exec(&action.block)
+      end
+    end
+
+    def collection_action
+      action = @gear._gear_collection_actions[params[:collection_action]]
+      if action && action.verbs.include?(request.request_method.to_sym.downcase)
+        return render json: instance_exec(&action.block)
       end
     end
 

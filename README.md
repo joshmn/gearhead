@@ -28,7 +28,7 @@ app/gears/.keep
 and modifies your routes:
 
 ```ruby
-mount ::Gearhead::Engine => '/api'
+Gearbox.routes(self)
 ```
 
 ## Configuration

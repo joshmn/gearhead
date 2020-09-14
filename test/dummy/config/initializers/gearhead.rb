@@ -1,4 +1,4 @@
-Gearhead.configure do |config|
+Gearhead.setup do |config|
   # == Routing
   #
   # The default actions a Gear can respond to
