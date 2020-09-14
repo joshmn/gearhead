@@ -204,7 +204,6 @@ end
 
 ## TODO
 
-* Handle collection actions in a better way than hijacking `show`
 * Better param handling
 * Handling params for member actions and collection actions
 
