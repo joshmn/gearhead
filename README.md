@@ -36,28 +36,32 @@ mount ::Gearhead::Engine => '/api'
 You can change most of these on the Gear-level, but we have opinions.
 
 ```ruby
-Gearhead.configure do |config|
-  ### Routing  
-  # The default actions a Gear can respond to 
+Gearhead.setup do |config|
+  # == Routing
+  #
+  # The default actions a Gear can respond to
   # Default is [:index, :create, :show, :update, :destroy]
   # config.actions = [:index, :show]
   #
+
+  # == Querying
   #
-  ### Queriyng
   # The default scope of a Gear will be the default scope of the resource.
   # Default is nil
   # config.scope = :visible
   #
+
+  # == Params
   #
-  ### Params
   # Ignored params for creating/updating records
   # Default is [:id, :created_at, :updated_at]
   # config.ignored_params = [:id, :created_at, :updated_at]
   #
+
+  # == Automount
   #
-  ### Automount
   # Change this to true if you want to automatically mount all your resources.
-  # config.automount.enabled = false 
+  # config.automount.enabled = false
   #
   # Automatically mount most of your resources
   # config.automount.resources = ['User', 'Post', 'Comment']
@@ -65,24 +69,29 @@ Gearhead.configure do |config|
   # Don't automatically mount these resources
   # config.automount.excluded = ['User', 'Post']
   #
+
+  # == Serialization
   #
-  ### Serialization
-  # Change the default serializer   
+  # Change the default serializer
   # Currently supports FastJSONAPI (:fast_jsonapi) and ActiveModelSerializers (:active_model_serializers)
   # Default is :fast_jsonapi
-  # config.serialization.adapter = :fast_jsonapi 
+  # config.serialization.adapter = :fast_jsonapi
   #
-  #  
-  ### Pagination
-  # Change the default paginator 
+
+  # == Pagination
+  #
+  # Change the default paginator
   # Currently supports :pagy and :will_paginate
   # Default is :pagy
-  # config.pagination.adapter = :pagy 
+  # config.pagination.adapter = :pagy
   #
-  # Controller
+
+  # == Controller
+  #
   # Base class for the Gearhead controller
   # Default is 'ApplicationController'
   # config.base_controller = 'ApplicationController'
+  #
 end
 ```
 
@@ -116,7 +125,7 @@ enabled, the defined Gear will still take precedence.
 
 Change what CRUD actions the Gear can respond to:
 
-```
+```ruby
 Gearhead.register Post do 
   actions :index, :show
   # or
@@ -168,7 +177,7 @@ Gearhead.register Post do
 end
 ```
 
-#### Finding resources
+### Finding resources
 
 Change your finder:
 
@@ -180,9 +189,24 @@ Gearhead.register Post do
 end
 ```
 
+### Permitting params
+
+Works just like the params you're used to:
+
+```ruby 
+Gearhead.register Post do 
+  permit_params :user_id, :content
+  # or do it for a certain subset of actions
+  permit_params :user_id, :content, only: :create 
+  permit_params :content, only: :update
+end
+```
+
 ## TODO
 
 * Handle collection actions in a better way than hijacking `show`
+* Better param handling
+* Handling params for member actions and collection actions
 
 ## Contributing
 
