@@ -1,11 +1,15 @@
 # Gearhead
 
-Gearhead turns your database into a RESTful API. It's like if ActiveAdmin, InheritedResources, and Grape had a baby.
+Gearhead turns your database into a RESTful API. It's like if [ActiveAdmin](https://github.com/activeadmin/activeadmin), [InheritedResources](https://github.com/activeadmin/inherited_resources), and [Grape](https://github.com/ruby-grape/grape) had a baby.
 
 ## Purpose
 
 For internal projects I was always standing up API endpoints that were separate from my regular controllers. The boilerplate 
 got old real fast. This eliminates boilerplate and leaves enough configuration for you to make it your own.
+
+## Goal 
+
+Rid the boilerplate for JSON APIs with opinions, while providing enough customization to work for most applications. 
 
 ## Installation
 
@@ -15,9 +19,7 @@ Gearhead is a Rails engine, for now.
 gem 'gearhead'
 ```
 
-## Setting up Gearhead
-
-After installing Gearhead, you need to run the generator.
+And then copy over the initializers: 
 
 ```
 rails g gearhead:install
@@ -212,7 +214,7 @@ end
 
 ### Querying 
 
-Uses Ransack under the hood. Just send the normal `q` in the query, like:
+Uses [Ransack](https://github.com/activerecord-hackery/ransack) under the hood. Just send the normal `q` in the query, like:
 
 `GET /gearhead/posts?q[user_id]=1`
 
@@ -233,6 +235,10 @@ end
 
 * Better param handling
 * Handling params for member actions and collection actions
+* Callbacks 
+* Documentation about authentication and `current_user`-ish stuff 
+* Wiki 
+* Logo 
 
 ## Contributing
 
