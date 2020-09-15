@@ -6,14 +6,14 @@ module Gearhead
     end
 
     def define_gear_setting(name, default = nil)
-      instance_variable_set("@_gear_#{name}", default)
+      instance_variable_set("@_gear_#{name}", default.dup)
       ivar = "@_gear_#{name}"
       self.class.define_method :"_gear_#{name}" do
         return instance_variable_get(ivar) if instance_variable_defined?(ivar)
         instance_variable_get("@_gear_#{name}")
       end
       self.class.define_method :"_gear_#{name}=" do |value|
-        instance_variable_set("@_gear_#{name}", value)
+        instance_variable_set("@_gear_#{name}", value.dup)
       end
     end
 
@@ -23,6 +23,7 @@ module Gearhead
       end
     end
   end
+
   class Gear
     include Settings
 
