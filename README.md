@@ -1,6 +1,11 @@
 # Gearhead
 
-Gearhead turns your database into a RESTful API. It's like if ActiveAdmin and Grape had a baby.
+Gearhead turns your database into a RESTful API. It's like if ActiveAdmin, InheritedResources, and Grape had a baby.
+
+## Purpose
+
+For internal projects I was always standing up API endpoints that were separate from my regular controllers. The boilerplate 
+got old real fast. This eliminates boilerplate and leaves enough configuration for you to make it your own.
 
 ## Installation
 
@@ -177,8 +182,20 @@ Just define what attributes you want exposed:
 
 ```ruby 
 Gearhead.register Post do 
-  attributes :id, :name
+  attributes :id, :title
 end
+```
+
+And customize one-off attributes:
+
+```ruby 
+Gearhead.register Post do 
+  attributes :id, :title
+
+  attribute :excerpt do |resource|
+    resource.content.first(100)
+  end
+end 
 ```
 
 ### Finding resources

@@ -2,11 +2,11 @@ PATH
   remote: .
   specs:
     gearhead (0.1.0)
-      jsonapi-serializer
-      pagy
+      jsonapi-serializer (~> 2)
+      pagy (~> 3.5)
       rails (~> 6.0.3, >= 6.0.3.2)
-      ransack
-      zeitwerk
+      ransack (~> 2.3)
+      zeitwerk (~> 2.2)
 
 GEM
   remote: https://rubygems.org/

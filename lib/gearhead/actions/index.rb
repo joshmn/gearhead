@@ -21,7 +21,7 @@ module Gearhead
         @collection = apply_query
         @collection = apply_pagination
         @collection = apply_serializer
-        @collection
+        @collection.to_json
       end
 
       private
@@ -70,7 +70,7 @@ module Gearhead
       end
 
       def apply_serializer
-        @gear.serializer_class.new(@collection, serialization_options)
+        @gear.collection_serializer.for(@collection, @gear.serializer_class, serialization_options)
       end
 
       def serialization_options

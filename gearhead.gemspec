@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "pry"
 
   spec.add_dependency 'ransack', '~> 2.3'
-  spec.add_dependency 'jsonapi-serializer', '~> 1.17'
-  spec.add_dependency 'pagy', '~> 0.19'
+  spec.add_dependency 'jsonapi-serializer', '~> 2'
+  spec.add_dependency 'pagy', '~> 3.5'
   spec.add_dependency 'zeitwerk', '~> 2.2'
 end

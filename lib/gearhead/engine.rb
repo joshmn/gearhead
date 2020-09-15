@@ -6,5 +6,7 @@ module Gearhead
       end
       Rails.autoloaders.main.ignore(Rails.root.join('app/gears'))
     end
+
+    paths["app/controllers"] = "lib"
   end
 end

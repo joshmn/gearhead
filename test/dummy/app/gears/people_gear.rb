@@ -1,9 +1,9 @@
 Gearhead.register Person do
-  collection_action :friends do
-    { bob: "cool" }
-  end
+  serializer_adapter :active_model_serializers
+  per_page 1
 
-  member_action :unfriend do
-    { result: true }
+  attributes :age
+  attribute :id do |resource|
+    "bob-#{resource.id}"
   end
 end

@@ -1,11 +1,8 @@
 module Gearhead
   class Gearbox
-    def initialize
-    end
+    def initialize; end
 
-    def setup!
-      # nothing
-    end
+    def setup!; end
 
     def prepare!
       ActiveSupport::Dependencies.autoload_paths -= load_paths
@@ -54,7 +51,7 @@ module Gearhead
         unload_gearhead = -> { Gearhead.gearbox.unload! }
 
         if app.config.reload_classes_only_on_change
-           ActiveSupport::Reloader.to_prepare(prepend: true, &unload_gearhead)
+          ActiveSupport::Reloader.to_prepare(prepend: true, &unload_gearhead)
         else
           ActiveSupport::Reloader.to_complete(&unload_gearhead)
         end
@@ -72,9 +69,9 @@ module Gearhead
         app.reloaders << routes_reloader
 
         ActiveSupport::Reloader.to_prepare do
-           unless Gearhead.gearbox.loaded?
+          unless Gearhead.gearbox.loaded?
             routes_reloader.execute_if_updated
-            Gearhead.application.load!
+            Gearhead.gearbox.load!
           end
         end
       end
