@@ -40,7 +40,7 @@ Gearhead.routes(self)
 
 You can change most of these on the Gear-level, but we have opinions.
 
-```ruby
+```ruby 
 Gearhead.setup do |config|
   # == Routing
   #

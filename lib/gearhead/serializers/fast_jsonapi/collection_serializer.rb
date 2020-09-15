@@ -1,6 +1,6 @@
 module Gearhead
   module Serializers
-    module ActiveModelSerializers
+    module FastJsonapi
       class CollectionSerializer
         def self.for(records, serializer, options = {})
           serializer.new(records, options)
