@@ -1,4 +1,3 @@
 Rails.application.routes.draw do
-  ::Gearhead.routes(self)
-
+  Gearhead.routes(self)
 end

@@ -7,7 +7,14 @@ module Gearhead
     end
 
     def apply
+      if Gearhead.config.automount.enabled?
+        define_automount_route
+      end
       define_gear_routes
+    end
+
+    def define_automount_route
+      @router.resources :gears, path: [::Gearhead.config.endpoint, ":resource_class"].join("/"), controller: "gearhead/gears", param: :resource_id
     end
 
     def define_gear_routes

@@ -2,7 +2,7 @@
 # frozen_string_literal: true
 
 most_recent_release = `git describe --abbrev=0`
-config_changed = `git diff tags/#{most_recent_release} --name-only | grep install/gearhead.rb.erb`.include?("gearhead.rb.erb")
+config_changed = false # `git diff tags/#{most_recent_release} --name-only | grep install/gearhead.rb.erb`.include?("gearhead.rb.erb")
 if config_changed
   require 'erb'
   setup_block_regex = %r{```ruby([a-z]*\nGearhead.setup[\s\S]*?\n)```}

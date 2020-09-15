@@ -1,6 +1,10 @@
 Gearhead.setup do |config|
   # == Routing
   #
+  # The endpoint in which to mount gearhead on.
+  # Default is "/gearhead" — must start with a slash, and have no trailing slash
+  config.endpoint = "/gearhead"
+  #
   # The default actions a Gear can respond to
   # Default is [:index, :create, :show, :update, :destroy]
   # config.actions = [:index, :show]
@@ -23,7 +27,7 @@ Gearhead.setup do |config|
   # == Automount
   #
   # Change this to true if you want to automatically mount all your resources.
-  # config.automount.enabled = false
+  config.automount.enabled = true
   #
   # Automatically mount most of your resources
   # config.automount.resources = ['User', 'Post', 'Comment']
