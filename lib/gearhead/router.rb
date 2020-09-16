@@ -14,12 +14,16 @@ module Gearhead
     end
 
     def define_automount_route
-      @router.resources :gears, path: [::Gearhead.config.endpoint, ":resource_class"].join("/"), controller: "gearhead/gears", param: :resource_id
+      @router.resources :gears, path: [::Gearhead.config.endpoint, "*resource_class"].join("/"), controller: "gearhead/gears", param: :resource_id
     end
 
     def define_gear_routes
       ::Gearhead.registry.all.each do |thing|
-        @router.resources thing.resource.model_name.route_key, path: [::Gearhead.config.endpoint, thing.path].join("/"), controller: "gearhead/gears", param: :resource_id, defaults: { resource_class: thing.resource.model_name.route_key } do
+        @router.resources thing.resource.model_name.route_key,
+                          path: [::Gearhead.config.endpoint, thing.path].join("/"),
+                          controller: "gearhead/gears",
+                          param: :resource_id,
+                          defaults: { resource_class: Gearhead::Utils.pathbuilder(thing.resource) } do
           define_actions(thing)
         end
       end
@@ -37,9 +41,7 @@ module Gearhead
 
       @router.collection do
         gear._gear_collection_actions.values.each do |custom_action|
-
           custom_action.verbs.each do |verb|
-
             args = [custom_action.name, to: 'gearhead/gears#collection_action', defaults: { collection_action: custom_action.name }]
             router.send(verb, *args)
           end

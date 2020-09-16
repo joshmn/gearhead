@@ -28,7 +28,6 @@ module Gearhead
     include Settings
 
     include Extensions::Actions
-    include Extensions::Attributes
     include Extensions::Associations
     include Extensions::CustomActions
     include Extensions::Finder
@@ -51,7 +50,11 @@ module Gearhead
     end
 
     def path
-      @options[:path] || @resource.model_name.route_key
+      if @options[:path]
+        Gearhead::Utils.check_path!(@options[:path])
+      else
+        Gearhead::Utils.pathbuilder(@resource)
+      end
     end
   end
 end

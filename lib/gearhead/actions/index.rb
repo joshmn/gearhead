@@ -38,10 +38,14 @@ module Gearhead
       def apply_scope
         return @collection unless valid_scope?(scope)
         if query = @gear._gear_defined_scopes[scope.to_sym].presence
-          query.call(@collection)
+          query.call(@collection, *scope_value)
         else
           @collection.send(scope)
         end
+      end
+
+      def scope_value
+        params[:scope_value].presence
       end
 
       def scope

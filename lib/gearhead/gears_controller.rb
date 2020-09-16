@@ -1,6 +1,8 @@
 # frozen_string_literal: true
+if defined?(ActiveModelSerializers)
+  ActiveModelSerializers.config.serializer_lookup_enabled = false
+end
 
-ActiveModelSerializers.config.serializer_lookup_enabled = false
 module Gearhead
   class GearsController < ::Gearhead.config.base_controller.constantize
     before_action :find_gear!
