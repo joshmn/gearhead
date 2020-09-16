@@ -1,0 +1,9 @@
+require 'test_helper'
+
+module Gearhead::Extensions
+  class PermittedParamsTest < Minitest::Spec
+    it "works" do
+      assert true
+    end
+  end
+end

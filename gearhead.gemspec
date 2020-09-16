@@ -16,7 +16,7 @@ Gem::Specification.new do |spec|
 
   spec.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
-  spec.add_dependency "rails", "~> 6.0.3", ">= 6.0.3.2"
+  spec.add_dependency "rails", ">= 5.0.0"
 
   spec.add_development_dependency "pg"
   spec.add_development_dependency "ffaker"
@@ -25,6 +25,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "better_errors"
   spec.add_development_dependency "binding_of_caller"
   spec.add_development_dependency "pry"
+  spec.add_development_dependency "minitest-hooks"
+  spec.add_development_dependency "minitest-matchers"
 
   spec.add_dependency 'ransack', '~> 2.3'
   spec.add_dependency 'jsonapi-serializer', '~> 2'
