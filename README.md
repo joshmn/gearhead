@@ -1,3 +1,5 @@
+![Gearhead logo](logo.png)
+
 # Gearhead
 
 Gearhead turns your database into a RESTful API. It's like if [ActiveAdmin](https://github.com/activeadmin/activeadmin), [InheritedResources](https://github.com/activeadmin/inherited_resources), and [Grape](https://github.com/ruby-grape/grape) had a baby.
